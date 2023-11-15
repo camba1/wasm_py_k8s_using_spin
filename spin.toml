@@ -1,0 +1,15 @@
+spin_manifest_version = "1"
+authors = ["Juan Peredo <jperedo@bolbeck.com>"]
+description = "Small app to test out using Spin to run WASM app in K8s"
+name = "wasm_py_K8s_using_spin"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "wasm-py-k8s-using-spin"
+source = "app.wasm"
+[component.trigger]
+route = "/..."
+[component.build]
+command = "spin py2wasm app -o app.wasm"
+watch = ["app.py", "Pipfile"]
